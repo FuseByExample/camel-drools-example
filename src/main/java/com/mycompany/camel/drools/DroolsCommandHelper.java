@@ -42,4 +42,6 @@ public class DroolsCommandHelper {
 
         in.setBody(command);
     }
+
+    // TODO: add other command handler methods (e.g. getGlobalObject, etc.)
 }

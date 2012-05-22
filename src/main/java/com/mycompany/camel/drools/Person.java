@@ -16,12 +16,10 @@
 
 package com.mycompany.camel.drools;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement(name = "person")
 public class Person {
     private String name;
     private int age;
+    private boolean canDrink = false;
 
     public String getName() {
         return name;
@@ -39,8 +37,20 @@ public class Person {
         this.age = age;
     }
 
+    public boolean isCanDrink() {
+        return canDrink;
+    }
+
+    public void setCanDrink(boolean canDrink) {
+        this.canDrink = canDrink;
+    }
+
     @Override
     public String toString() {
-        return "Person [name=" + name + ", age=" + age + "]";
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", canDrink=" + canDrink +
+                '}';
     }
 }

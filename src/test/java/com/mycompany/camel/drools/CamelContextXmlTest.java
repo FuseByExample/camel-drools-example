@@ -16,45 +16,92 @@
 
 package com.mycompany.camel.drools;
 
-import java.util.Collection;
-
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;
-import org.drools.runtime.ExecutionResults;
+import org.drools.runtime.impl.ExecutionResultImpl;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Collection;
+
 public class CamelContextXmlTest extends CamelSpringTestSupport {
-	// templates to send to input endpoints
-	@Produce(uri = "direct:paymentServiceEndpoint")
-	protected ProducerTemplate inputEndpoint;
+    // templates to send to input endpoints
+    @Produce(uri = "direct:ruleOnBody")
+    protected ProducerTemplate ruleOnBodyEndpoint;
+    @Produce(uri = "direct:ruleOnCommand")
+    protected ProducerTemplate ruleOnCommandEndpoint;
 
-	@Test
-	public void testCamelRoute() throws Exception {
-		Person person = new Person();
-		person.setName("Scott");
-		person.setAge(21);
+    @Test
+    public void testRuleOnBody() throws Exception {
+        Person person = new Person();
+        person.setName("Young Scott");
+        person.setAge(18);
 
-		ExecutionResults response = inputEndpoint.requestBody(person, ExecutionResults.class);
+        Person response = ruleOnBodyEndpoint.requestBody(person, Person.class);
 
-		assertNotNull(response);
+        assertNotNull(response);
+        assertFalse(person.isCanDrink());
 
-		// Expecting single result value of type Person
-		final Collection<String> identifiers = response.getIdentifiers();
-		assertNotNull(identifiers);
-		assertTrue(identifiers.size() >= 1);
+        // Test for alternative result
 
-		for (String identifier : identifiers) {
-			final Object value = response.getValue(identifier);
-			assertNotNull(value);
-			assertIsInstanceOf(Person.class, value);
-			System.out.println(identifier + " = " + value);
-		}
-	}
+        person.setName("Scott");
+        person.setAge(21);
 
-	@Override
-	protected ClassPathXmlApplicationContext createApplicationContext() {
-		return new ClassPathXmlApplicationContext("META-INF/spring/camel-context.xml");
-	}
+        response = ruleOnBodyEndpoint.requestBody(person, Person.class);
+
+        assertNotNull(response);
+        assertTrue(person.isCanDrink());
+    }
+
+    @Test
+    public void testRuleOnCommand() throws Exception {
+        Person person = new Person();
+        person.setName("Young Scott");
+        person.setAge(18);
+
+        ExecutionResultImpl response = ruleOnCommandEndpoint.requestBody(person, ExecutionResultImpl.class);
+
+        assertNotNull(response);
+
+        // Expecting single result value of type Person
+        Collection<String> identifiers = response.getIdentifiers();
+        assertNotNull(identifiers);
+        assertTrue(identifiers.size() >= 1);
+
+        for (String identifier : identifiers) {
+            final Object value = response.getValue(identifier);
+            assertNotNull(value);
+            assertIsInstanceOf(Person.class, value);
+            assertFalse(((Person) value).isCanDrink());
+            System.out.println(identifier + " = " + value);
+        }
+
+        // Test for alternative result
+
+        person.setName("Scott");
+        person.setAge(21);
+
+        response = ruleOnCommandEndpoint.requestBody(person, ExecutionResultImpl.class);
+
+        assertNotNull(response);
+
+        // Expecting single result value of type Person
+        identifiers = response.getIdentifiers();
+        assertNotNull(identifiers);
+        assertTrue(identifiers.size() >= 1);
+
+        for (String identifier : identifiers) {
+            final Object value = response.getValue(identifier);
+            assertNotNull(value);
+            assertIsInstanceOf(Person.class, value);
+            assertTrue(((Person) value).isCanDrink());
+            System.out.println(identifier + " = " + value);
+        }
+    }
+
+    @Override
+    protected ClassPathXmlApplicationContext createApplicationContext() {
+        return new ClassPathXmlApplicationContext("META-INF/spring/camel-context.xml");
+    }
 }
