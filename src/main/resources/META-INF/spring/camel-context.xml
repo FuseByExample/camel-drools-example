@@ -38,29 +38,36 @@
     <bean id="droolsHelper" class="com.mycompany.camel.drools.DroolsCommandHelper"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring">
-    <route trace="true" id="ruleOnBody">
-        <description>This route shows an example of passing (inserting) the Body of the message as a POJO to Drools for execution</description>
-        <from uri="direct:ruleOnBody"/>
-        <to uri="drools:node1/ksession1?action=insertBody">
-            <description>valid 'action' values are:
-	'execute' that takes a 'Command' object (default)
-	'insertBody' that inserts the Exchange.in.body, and executes rules
-	'insertMessage' that inserts the Exchange.in (type org.apache.camel.Message), and executes rules
-	'insertExchange' that inserts the Exchange (type org.apache.camel.Exchange), and executes rules</description>
-        </to>
-    </route>
-    <route trace="true" id="ruleOnCommand">
-        <description>This route shows an example of creating a Drools Command wrapping the Body of the message with the help of the custom DroolsCommandHelperBean (included in this project), and passing this Drools Command to the ruleset for execution.</description>
-        <from uri="direct:ruleOnCommand"/>
-        <bean method="insertAndFireAll" ref="droolsHelper"/>
-        <to uri="drools:node1/ksession1?action=execute">
-            <description>valid 'action' values are:
-	'execute' that takes a 'Command' object (default)
-	'insertBody' that inserts the Exchange.in.body, and executes rules
-	'insertMessage' that inserts the Exchange.in (type org.apache.camel.Message), and executes rules
-	'insertExchange' that inserts the Exchange (type org.apache.camel.Exchange), and executes rules</description>
-        </to>
-    </route>
-</camelContext>
+        <route trace="true" id="ruleOnBody">
+            <description>This route shows an example of passing (inserting) the Body of the message as a POJO to Drools
+                for execution
+            </description>
+            <from uri="direct:ruleOnBody"/>
+            <to uri="drools:node1/ksession1?action=insertBody">
+                <description>valid 'action' values are:
+                    'execute' that takes a 'Command' object (default)
+                    'insertBody' that inserts the Exchange.in.body, and executes rules
+                    'insertMessage' that inserts the Exchange.in (type org.apache.camel.Message), and executes rules
+                    'insertExchange' that inserts the Exchange (type org.apache.camel.Exchange), and executes rules
+                </description>
+            </to>
+        </route>
+        <route trace="true" id="ruleOnCommand">
+            <description>This route shows an example of creating a Drools Command wrapping the Body of the message with
+                the help of the custom DroolsCommandHelperBean (included in this project), and passing this Drools
+                Command to the ruleset for execution.
+            </description>
+            <from uri="direct:ruleOnCommand"/>
+            <bean method="insertAndFireAll" ref="droolsHelper"/>
+            <to uri="drools:node1/ksession1?action=execute">
+                <description>valid 'action' values are:
+                    'execute' that takes a 'Command' object (default)
+                    'insertBody' that inserts the Exchange.in.body, and executes rules
+                    'insertMessage' that inserts the Exchange.in (type org.apache.camel.Message), and executes rules
+                    'insertExchange' that inserts the Exchange (type org.apache.camel.Exchange), and executes rules
+                </description>
+            </to>
+        </route>
+    </camelContext>
 
 </beans>
