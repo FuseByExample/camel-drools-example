@@ -16,6 +16,7 @@
 
 package com.mycompany.camel.drools;
 
+import com.fusesource.example.drools.Person;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;

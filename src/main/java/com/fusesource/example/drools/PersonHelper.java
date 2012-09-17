@@ -14,22 +14,15 @@
  *    limitations under the License.
  */
 
-package com.mycompany.camel.drools;
+package com.fusesource.example.drools;
 
-import com.fusesource.example.drools.Person;
+public class PersonHelper {
+	
+	public Person createTestPerson() {
+		Person person = new Person();
+		person.setName("Test Person");
+		person.setAge(21);
+		return person;
+	}
 
-rule "Cheers"
-when
-    p : Person( age >= 21 )
-then
-    System.out.println(p.getName() + " is old enough to drink");
-    p.setCanDrink(Boolean.TRUE);
-end
-
-rule "Not today"
-when
-    p : Person( age < 21 )
-then
-    System.out.println(p.getName() + " can't drink");
-    p.setCanDrink(Boolean.FALSE);
-end
+}

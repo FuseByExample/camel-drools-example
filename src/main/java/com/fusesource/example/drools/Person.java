@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.mycompany.camel.drools;
+package com.fusesource.example.drools;
 
 public class Person {
     private String name;

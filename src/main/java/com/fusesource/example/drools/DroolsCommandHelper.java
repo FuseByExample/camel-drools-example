@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.mycompany.camel.drools;
+package com.fusesource.example.drools;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Message;
