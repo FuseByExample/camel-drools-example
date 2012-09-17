@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 FuseSource
+ * Copyright 2012 Red Hat
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,9 +14,8 @@
  *    limitations under the License.
  */
 
-package com.mycompany.camel.drools;
+package com.redhat.example.drools;
 
-import com.fusesource.example.drools.Person;
 import org.apache.camel.Produce;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.test.junit4.CamelSpringTestSupport;

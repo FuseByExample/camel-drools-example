@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 FuseSource
+ * Copyright 2012 Red Hat
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-package com.fusesource.example.drools;
+package com.redhat.example.drools;
 
 public class Person {
     private String name;
