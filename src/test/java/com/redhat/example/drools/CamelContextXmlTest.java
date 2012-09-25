@@ -27,9 +27,9 @@ import java.util.Collection;
 
 public class CamelContextXmlTest extends CamelSpringTestSupport {
     // templates to send to input endpoints
-    @Produce(uri = "direct:ruleOnBody")
+    @Produce(uri = "direct://ruleOnBody")
     protected ProducerTemplate ruleOnBodyEndpoint;
-    @Produce(uri = "direct:ruleOnCommand")
+    @Produce(uri = "direct://ruleOnCommand")
     protected ProducerTemplate ruleOnCommandEndpoint;
 
     @Test
