@@ -46,7 +46,7 @@
         <repository>
             <id>fusesource</id>
             <name>FuseSource Release Repository</name>
-            <url>http://repo.fusesource.com/maven2</url>
+            <url>http://repo.fusesource.com/nexus/content/groups/public/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -74,7 +74,7 @@
         <pluginRepository>
             <id>fusesource</id>
             <name>FuseSource Release Repository</name>
-            <url>http://repo.fusesource.com/maven2</url>
+            <url>http://repo.fusesource.com/nexus/content/groups/public/</url>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -115,22 +115,26 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-jaxb</artifactId>
             <version>${camel.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-xstream</artifactId>
             <version>${camel.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-cxf</artifactId>
             <version>${camel.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-bundle-jaxrs</artifactId>
             <version>${cxf.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -235,11 +239,9 @@
                 <configuration>
                     <instructions>
                         <Import-Package>*;resolution:=optional</Import-Package>
-                        <Embed-Dependency>*;scope=compile</Embed-Dependency>
+                        <Embed-Dependency>*;scope=compile;artifactId=!slf4j*|spring*|camel*|commons-logging*</Embed-Dependency>
                         <Embed-Transitive>true</Embed-Transitive>
-                        <Include-Resource>{maven-resources},{maven-dependencies}</Include-Resource>
-                        <Bundle-ClassPath>.,{maven-dependencies}</Bundle-ClassPath>
-                        <_exportcontents>*</_exportcontents>
+                        <_exportcontents>org.drools.*,org.jbpm.*,org.mvel2.*</_exportcontents>
                     </instructions>
                 </configuration>
             </plugin>

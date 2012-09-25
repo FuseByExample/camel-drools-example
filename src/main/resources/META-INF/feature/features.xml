@@ -16,14 +16,13 @@
   ~    limitations under the License.
   -->
 
-<features name="payment-service"
+<features name="camel-drools-example-${project.version}"
           xmlns="http://karaf.apache.org/xmlns/features/v1.0.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.0.0 http://karaf.apache.org/xmlns/features/v1.0.0">
-    <repository>mvn:org.apache.servicemix/apache-servicemix/${servicemix.version}/xml/features</repository>
     <repository>mvn:org.apache.camel.karaf/apache-camel/${camel.version}/xml/features</repository>
 
-    <feature name='camel-drools-example' version='${project.version}'>
+    <feature name="camel-drools-example" description="Drools-Camel Example" version="${project.version}">
         <feature version="${camel.version}">camel-spring</feature>
         <feature version="${camel.version}">camel-jaxb</feature>
         <feature version="${camel.version}">camel-xstream</feature>
