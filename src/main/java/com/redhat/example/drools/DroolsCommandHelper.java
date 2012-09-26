@@ -26,22 +26,23 @@ import org.drools.command.runtime.rule.InsertObjectCommand;
 import java.util.List;
 
 /**
- * Class to help create wrapper Drools Expert Command for use with org.drools/drools-camel component.
+ * Class to help create wrapper Drools Expert Command for use with
+ * org.drools/drools-camel component.
  */
 public class DroolsCommandHelper {
-    public void insertAndFireAll(Exchange exchange) {
-        final Message in = exchange.getIn();
-        final Object body = in.getBody();
+	public void insertAndFireAll(Exchange exchange) {
+		final Message in = exchange.getIn();
+		final Object body = in.getBody();
 
-        // TODO: add type checking to handle arrays of objects
+		// TODO: add type checking to handle arrays of objects
 
-        BatchExecutionCommandImpl command = new BatchExecutionCommandImpl();
-        final List<GenericCommand<?>> commands = command.getCommands();
-        commands.add(new InsertObjectCommand(body, "obj1"));
-        commands.add(new FireAllRulesCommand());
+		BatchExecutionCommandImpl command = new BatchExecutionCommandImpl();
+		final List<GenericCommand<?>> commands = command.getCommands();
+		commands.add(new InsertObjectCommand(body, "obj1"));
+		commands.add(new FireAllRulesCommand());
 
-        in.setBody(command);
-    }
+		in.setBody(command);
+	}
 
-    // TODO: add other command handler methods (e.g. getGlobalObject, etc.)
+	// TODO: add other command handler methods (e.g. getGlobalObject, etc.)
 }

@@ -17,40 +17,37 @@
 package com.redhat.example.drools;
 
 public class Person {
-    private String name;
-    private int age;
-    private boolean canDrink = false;
+	private String name;
+	private int age;
+	private boolean canDrink = false;
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public int getAge() {
-        return age;
-    }
+	public int getAge() {
+		return age;
+	}
 
-    public void setAge(int age) {
-        this.age = age;
-    }
+	public void setAge(int age) {
+		this.age = age;
+	}
 
-    public boolean isCanDrink() {
-        return canDrink;
-    }
+	public boolean isCanDrink() {
+		return canDrink;
+	}
 
-    public void setCanDrink(boolean canDrink) {
-        this.canDrink = canDrink;
-    }
+	public void setCanDrink(boolean canDrink) {
+		this.canDrink = canDrink;
+	}
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", canDrink=" + canDrink +
-                '}';
-    }
+	@Override
+	public String toString() {
+		return "Person{" + "name='" + name + '\'' + ", age=" + age
+				+ ", canDrink=" + canDrink + '}';
+	}
 }
