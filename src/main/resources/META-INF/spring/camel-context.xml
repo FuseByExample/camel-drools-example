@@ -39,8 +39,6 @@
 
     <bean id="personHelper" class="com.redhat.example.drools.PersonHelper"/>
 
-    <bean id="drools" class="org.drools.camel.component.DroolsComponent"/>
-
     <camelContext xmlns="http://camel.apache.org/schema/spring">
     <route trace="false" id="testRoute">
         <description>Example route that will regularly create a Person with a random age and verify their age</description>
