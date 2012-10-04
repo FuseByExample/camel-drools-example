@@ -28,6 +28,9 @@
     <drools:grid-node id="node1"/>
 
     <drools:kbase id="kbase1" node="node1">
+        <drools:configuration>
+            <drools:mbeans enabled="true"/>
+        </drools:configuration>
         <drools:resources>
             <drools:resource type="DRL" source="classpath:testSpring.drl"/>
         </drools:resources>
