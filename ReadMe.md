@@ -1,6 +1,9 @@
 Drools-Camel Component Example
 ==============================
 
+**NOTE** that this example has been included in the [Fuse project itself](https://github.com/fusesource/fuse/tree/master/tooling/examples/camel-drools-example) and is now used to create the Drools Camel archetype. If you want to see the most up to date version of this example see [here](https://github.com/fusesource/fuse/tree/master/tooling/examples/camel-drools-example)
+
+
 To build this project use
 
     mvn install
