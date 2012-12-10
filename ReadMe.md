@@ -22,9 +22,14 @@ Start Fuse ESB
 
 In the Fuse ESB console, use the following
 
-    FuseESB:karaf@root> features:addurl mvn:com.redhat.example/camel-drools-example/1.0.0-SNAPSHOT/xml/features
-    FuseESB:karaf@root> features:install camel-drools-examples
+    FuseESB:karaf@root> features:addurl mvn:com.redhat.example/camel-drools-example/1.1.0-SNAPSHOT/xml/features
+    FuseESB:karaf@root> features:install camel-drools-example
 
 To see the results tail the Fuse ESB log
 
     tail -f <Fuse ESB Home>/data/log/fuseesb.log
+
+## Note for vanilla Karaf users
+
+You may need to edit `etc/org.ops4j.pax.url.mvn.cfg`, and add to the `org.ops4j.pax.url.mvn.repositories` property an
+entry for the FuseSource repository `http://repo.fusesource.com/nexus/content/repositories/releases/`
