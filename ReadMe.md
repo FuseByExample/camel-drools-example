@@ -1,10 +1,9 @@
 Drools-Camel Component Example
 ==============================
 
-**NOTE** that this example has been included in the [Fuse project itself](https://github.com/fusesource/fuse/tree/master/tooling/examples/camel-drools-example)
-and is now used to create the Drools Camel archetype. If you want to see the most up to date version of this example
-see [here](https://github.com/fusesource/fuse/tree/master/tooling/examples/camel-drools-example)
-
+NOTE: This project is not supported on JBoss Fuse version 6.3 or later
+----------------------------------------------------------------------
+See the Fuse Integration Pack at http://developers.redhat.com/products/fuse/download/
 
 To build this project use
 
